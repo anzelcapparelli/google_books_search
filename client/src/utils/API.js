@@ -20,7 +20,7 @@ export default {
 // vvv API request to Google Books API
 
   getSearch: function (query) {
-    return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query + "&key=" + process.env.REACT_APP_API_KEY  );
+    return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + query);
   }
 
 };

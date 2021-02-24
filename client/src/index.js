@@ -24,7 +24,6 @@ API.getSearch("Harry Potter").then(res=>{
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <div className= {process.env.REACT_APP_API_KEY} />
   </React.StrictMode>,
   document.getElementById('root')
 );
