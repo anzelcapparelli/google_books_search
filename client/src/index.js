@@ -7,9 +7,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import './index.css';
 
+
+// ===============================================================
+
+import API from "./utils/API";
+require("dotenv").config();
+
+API.getSearch("Harry Potter").then(res=>{
+  console.log(res);
+})
+
+// ^^^ temporary reference (will put in components later)
+// ===============================================================
+
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <div className= {process.env.REACT_APP_API_KEY} />
   </React.StrictMode>,
   document.getElementById('root')
 );
