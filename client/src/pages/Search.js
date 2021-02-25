@@ -27,7 +27,7 @@ function Search() {
                 gbID: id, title, authors,
                 description, pages: pageCount, genres: categories,
                 link: infoLink
-                // , image: imageLinks
+                , image: imageLinks
             });
         })
 
@@ -54,8 +54,12 @@ function Search() {
     //     //use it to update state 
     //   }
 
-    // function handleFormSubmit(event) {
+    // function handleFormSubmit(book, event) {
     //     event.preventDefault();
+    //     if (book.length){
+
+    //         API.saveBook(book);
+    //     }
     // }
 
     return (
@@ -66,14 +70,14 @@ function Search() {
                 <div>
                     {searchList.map(searchBook => {
                         const { gbID,
-                            image, 
+                            image:{thumbnail}, 
                             title, authors, pages, genres, link, description } = searchBook;
 
                         return (
                             <div key={gbID}>
 
                                 <hr />
-                                {/* <img src={image.thumbnail} alt={title} /> */}
+                                <img src={thumbnail} alt={title} />
                                 {/* <p>{title} by {authors.join(", ")}</p> */}
                                 <p>{title} by {authors}</p>
                                 <p>pages: {pages} </p>
@@ -84,6 +88,7 @@ function Search() {
                                 {/* ^^^ wrong page */}
                                 {/* need a save on button click */}
                                 <p>{description}</p>
+                                {/* <button onClick={handleFormSubmit(searchBook)}>save</button> */}
                                 <hr />
 
                             </div>
