@@ -14,7 +14,7 @@ import API from "./utils/API";
 require("dotenv").config();
 
 API.getSearch("Harry Potter").then(res=>{
-  console.log(res);
+  console.log(res.data.items[0].volumeInfo.imageLinks.thumbnail);
 })
 
 // ^^^ temporary reference (will put in components later)
