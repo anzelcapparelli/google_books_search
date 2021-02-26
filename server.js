@@ -17,10 +17,10 @@ if (process.env.NODE_ENV === "production") {
 
 // ====================================================================================================
 
-// const routes = require("./routes");
+const routes = require("./routes");
 // ^^^ exports all routes into a index.js file, which is what's sent into this file
 
-// app.use(routes);
+app.use(routes);
 // ^^^ activate once you have routes folder!
 
 // ====================================================================================================

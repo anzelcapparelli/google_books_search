@@ -1,47 +1,42 @@
 import React, { useEffect, useState } from "react";
 import API from "../utils/API";
 
+function bookSearchResult(result) {
+
+
+    const resultClean = result.data.items.map(obj => {
+        const { id, volumeInfo: {
+            title, authors, description,
+            pageCount, categories, infoLink
+            ,
+            imageLinks
+        }
+        } = obj;
+
+        return ({
+            gbID: id, title, authors,
+            description, pages: pageCount, genres: categories,
+            link: infoLink
+            , image: imageLinks
+        });
+    })
+
+    console.log(resultClean);
+
+    return (resultClean);
+}
+
 function Search() {
 
     const [searchList, setSearchList] = useState([]);
 
     // need form input as well!
-
-    function BookSearchResult(result) {
-        // const { id, volumeInfo: {
-        //     title, authors, description,
-        //     pageCount, categories, infoLink,
-        //     imageLinks: { thumbnail } }
-        // } = result.data.items
-
-        const resultClean = result.data.items.map(obj => {
-            const { id, volumeInfo: {
-                title, authors, description,
-                pageCount, categories, infoLink
-                ,
-                imageLinks
-            }
-            } = obj;
-
-            return ({
-                gbID: id, title, authors,
-                description, pages: pageCount, genres: categories,
-                link: infoLink
-                , image: imageLinks
-            });
-        })
-
-        console.log(resultClean);
-
-        return setSearchList(resultClean);
-    }
-
     useEffect(() => { console.log(searchList) }, [searchList])
 
     useEffect(() => {
         API.getSearch("Harry Potter")
             .then(res => {
-                BookSearchResult(res);
+                setSearchList(bookSearchResult(res));
             })
             .catch(err => console.log(err));
     }, [])
@@ -54,30 +49,47 @@ function Search() {
     //     //use it to update state 
     //   }
 
-    // function handleFormSubmit(book, event) {
+    // function handleFormSubmit(event) {
     //     event.preventDefault();
-    //     if (book.length){
-
-    //         API.saveBook(book);
-    //     }
+    //     console.log(event.target);
     // }
 
+    function handleSave(event) {
+        event.preventDefault();
+        // const bookToSave= JSON.parse(event.target.value);
+        let bookToSave=searchList.filter(book => {
+            return event.target.value === book.gbID;
+        })
+        bookToSave=bookToSave[0];
+        console.log(bookToSave);
+        
+        API.saveBook(bookToSave)
+        .then(res => console.log(res))
+        .catch(err => console.error(err))
+    }
+
+
     return (
+
+
         <div>
-            <h1>Results</h1>
+            <h1>Search for Books</h1>
 
             {searchList.length ? (
                 <div>
+                    <h2>Results</h2>
                     {searchList.map(searchBook => {
                         const { gbID,
-                            image:{thumbnail}, 
+                            image,
                             title, authors, pages, genres, link, description } = searchBook;
-
+                        console.log(searchBook);
                         return (
                             <div key={gbID}>
 
                                 <hr />
-                                <img src={thumbnail} alt={title} />
+
+                                {/* <img src={image.thumbnail} alt={title} />) */}
+                                {image && <img src={image.thumbnail} alt={title} />}
                                 {/* <p>{title} by {authors.join(", ")}</p> */}
                                 <p>{title} by {authors}</p>
                                 <p>pages: {pages} </p>
@@ -88,7 +100,7 @@ function Search() {
                                 {/* ^^^ wrong page */}
                                 {/* need a save on button click */}
                                 <p>{description}</p>
-                                {/* <button onClick={handleFormSubmit(searchBook)}>save</button> */}
+                                <button onClick={handleSave} value={gbID}>save</button>
                                 <hr />
 
                             </div>

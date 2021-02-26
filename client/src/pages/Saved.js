@@ -21,7 +21,12 @@ function Saved() {
 
   return (
 
-    <div></div>
+    <div>
+      <h1>Saved Books</h1>
+
+      <pre>{savedList}</pre>
+      {/* a ternary that checks var length and returns "none saved yet if length falsy" */}
+    </div>
 
   );
 

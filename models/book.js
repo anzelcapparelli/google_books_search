@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 const bookSchema = new Schema({
   gbID: {type: String, index: true, unique: true},
   title: { type: String, required: true },
-  authors: { type: Array, required: true },
+  authors: { type: Array },
   description: String,
   pages: Number,
   genres: Array,
-  image: String,
+  image: Array,
   link: String,
   date: { type: Date, default: Date.now }
 });
