@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a href="https://books.google.com/" className="navbar-brand" rel="noreferrer" target="_blank"> Google Books Page</a>
       <NavLink className="navbar-brand" to="/search" activeClassName="active">
         Search
       </NavLink>

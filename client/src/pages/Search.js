@@ -94,7 +94,7 @@ function Search() {
               disabled={!formSearch.query}
               onClick={handleFormSubmit}
             >
-              Submit Book
+              Search
             </FormBtn>
             </form>
 
@@ -117,7 +117,7 @@ function Search() {
                                 <p>pages: {pages} </p>
                                 {/* <p>genres: {genres.join(", ")}</p> */}
                                 <p>genres: {genres}</p>
-                                <a href={link}> Google Books Page</a>
+                                <a href={link} rel="noreferrer" target="_blank"> Google Books Page</a>
                                 {/* <DeleteBtn onClick={() => deleteBook(book._id)} /> */}
                                 <p>{description}</p>
                                 <button onClick={handleSave} value={gbID}>save</button>
