@@ -1,29 +1,59 @@
-# Create React Express App
 
-## About This Boilerplate
+  # Google Books Search
+  
+  ![License](https://img.shields.io/badge/License-MIT-informational)
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+  deployed app: [click here](https://google-books379009.herokuapp.com/)
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+  ### Launch page:
+  ![launch page](public/assets/images/###PLACEHOLDER###.jpg)
 
-## Starting the app locally
+  ## Table of contents
+  ​
+  
+  - [Description](#Descriptionn)
+  - [Installation](#Installation)
+  - [Usage](#Usage)
+  - [Contributing](#Contributing)
+  - [Testing](#Testing)
+  - [License](#License)
+  - [Questions?](#Questions?)
+  
+  
+  code snippet:
+  ``` javascript
+  var example;
+  ```
+  
+  ## Description
+  
+  This showcases a MERN app (MongoDB, Express.js, React.js, Node.js). React-router-dom was used for mounting and unmounting components, in order to navigate between app pages.  This full-stack app allows users to search Google Books, then save their favorites for easier referencing later.
+  
+  ## Installation
+  
+  If you would like to download and run this app locally, or deploy a copy of the app: download the files from GitHub, then run the command ``` npm i ``` in the terminal while in the root file. This will download all necessary node modules for the app to run. Additionally, as typical for MERN apps this app requires Node.js, Express.js MongoDB
+  
+  ## Usage
+  
+  either navigate to the site on heroku, or run ```npm start``` in the root directory, if running locally. 
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+  On the main page, simply enter the book title, or part of the title at least, into the search form. More distinct terms in the search or the full title tends to yield better search results. Upon hitting the 'search' button, books matching the query will show with general information about them. Clicking the 'save' button on the Search page will save the book to the Saved page. On the Saved page, the books can be removed by clicking the 'delete' button. Clicking the view button by each book will open a tab to the book on Google Books, allowing more information to be obtained
+  
+  This app is available on heroku https://google-books379009.herokuapp.com/
+  
+  ## Testing
+  
+  tests coming soon!
+  
+  ## License
+  
+  This project is licensed under the MIT
+  
+  ## Questions?
+  
+  If you have any questions or comments, please contact me using one or more of the following:
+  
+  Github Profile: [https://github.com/anzelcapparelli](https://github.com/anzelcapparelli)
 
-```
-npm install
-```
+  Email: anzelcapparelli@gmail.com
 
-This should install node modules within the server and the client folder.
-
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
-```
-
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
