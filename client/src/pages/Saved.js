@@ -9,14 +9,19 @@ function Saved() {
     loadBooks()
   }, [])
 
+  // Loads all books and sets them to savedList
   function loadBooks() {
     API.getBooks()
-      .then(res => {
-        setSavedList(res.data);
-        console.log(res.data);
-      })
+      .then(res => {setSavedList(res.data)})
       .catch(err => console.log(err));
   };
+
+    // Deletes a book from the database with a given id, then reloads books from the db
+    function deleteBook(id) {
+      API.deleteBook(id)
+        .then(() => loadBooks())
+        .catch((err) => console.log(err));
+    }
 
 
   return (
@@ -41,7 +46,7 @@ function Saved() {
             {/* <p>genres: {genres.join(", ")}</p> */}
             <p>genres: {genres}</p>
             <a href={link}> Google Books Page</a>
-            {/* <DeleteBtn onClick={() => deleteBook(_id)} /> */}
+            <button onClick={() => deleteBook(_id)}>delete</button>
             <p>{description}</p>
             {/* <button onClick={handleSave} value={gbID}>save</button> */}
             <hr />
