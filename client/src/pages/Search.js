@@ -88,7 +88,6 @@ function Search() {
 
                                 <hr />
 
-                                {/* <img src={image.thumbnail} alt={title} />) */}
                                 {image && <img src={image.thumbnail} alt={title} />}
                                 {/* <p>{title} by {authors.join(", ")}</p> */}
                                 <p>{title} by {authors}</p>
@@ -97,8 +96,6 @@ function Search() {
                                 <p>genres: {genres}</p>
                                 <a href={link}> Google Books Page</a>
                                 {/* <DeleteBtn onClick={() => deleteBook(book._id)} /> */}
-                                {/* ^^^ wrong page */}
-                                {/* need a save on button click */}
                                 <p>{description}</p>
                                 <button onClick={handleSave} value={gbID}>save</button>
                                 <hr />

@@ -24,8 +24,31 @@ function Saved() {
     <div>
       <h1>Saved Books</h1>
 
-      <pre>{savedList}</pre>
-      {/* a ternary that checks var length and returns "none saved yet if length falsy" */}
+      {savedList.map(savedBook => {
+        const { _id, gbID,
+          image,
+          title, authors, pages, genres, link, description } = savedBook;
+        console.log(_id);
+        return (
+          <div key={gbID}>
+
+            <hr />
+
+            {image && <img src={image.thumbnail} alt={title} />}
+            {/* <p>{title} by {authors.join(", ")}</p> */}
+            <p>{title} by {authors}</p>
+            <p>pages: {pages} </p>
+            {/* <p>genres: {genres.join(", ")}</p> */}
+            <p>genres: {genres}</p>
+            <a href={link}> Google Books Page</a>
+            {/* <DeleteBtn onClick={() => deleteBook(_id)} /> */}
+            <p>{description}</p>
+            {/* <button onClick={handleSave} value={gbID}>save</button> */}
+            <hr />
+
+          </div>
+        );
+      })}
     </div>
 
   );
