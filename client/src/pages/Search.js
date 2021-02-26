@@ -21,9 +21,7 @@ function bookSearchResult(result) {
             , image: imageLinks
         });
     })
-
-    console.log(resultClean);
-
+    
     return (resultClean);
 }
 
@@ -33,9 +31,7 @@ function Search() {
     const [formSearch, setFormSearch] = useState({});
 
 
-    // need form input as well!
-    useEffect(() => { console.log(searchList) }, [searchList])
-
+// starting search
     useEffect(() => {
         API.getSearch("Harry Potter")
             .then(res => {
@@ -69,10 +65,8 @@ function Search() {
             return event.target.value === book.gbID;
         })
         bookToSave=bookToSave[0];
-        console.log(bookToSave);
         
         API.saveBook(bookToSave)
-        .then(res => console.log(res))
         .catch(err => console.error(err))
     }
 
@@ -105,7 +99,6 @@ function Search() {
                         const { gbID,
                             image,
                             title, authors, pages, genres, link, description } = searchBook;
-                        console.log(searchBook);
                         return (
                             <div key={gbID}>
 

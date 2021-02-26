@@ -33,7 +33,6 @@ function Saved() {
         const { _id, gbID,
           image,
           title, authors, pages, genres, link, description } = savedBook;
-        console.log(_id);
         return (
           <div key={gbID}>
 

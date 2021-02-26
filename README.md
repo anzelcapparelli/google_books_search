@@ -31,11 +31,13 @@
   
   ## Installation
   
-  If you would like to download and run this app locally, or deploy a copy of the app: download the files from GitHub, then run the command ``` npm i ``` in the terminal while in the root file. This will download all necessary node modules for the app to run. Additionally, as typical for MERN apps this app requires Node.js, Express.js MongoDB
+  If you would like to download and run this app locally, or deploy a copy of the app: download the files from GitHub, then run the command ``` npm i ``` in the terminal while in the root file. This will download all necessary node modules for the app to run. Additionally, as typical for MERN apps this, app requires React.js, Node.js, Express.js, and MongoDB to function locally.
+
+  If a copy of this app is deployed, linking the app to a MongoDB database is necessary. The method used for this app was by using MongoDB Atlas, which has a free tier available: https://www.mongodb.com/cloud/atlas
   
   ## Usage
   
-  either navigate to the site on heroku, or run ```npm start``` in the root directory, if running locally. 
+  either navigate to the site on heroku, or run ```npm start``` in the root directory, if running locally.
 
   On the main page, simply enter the book title, or part of the title at least, into the search form. More distinct terms in the search or the full title tends to yield better search results. Upon hitting the 'search' button, books matching the query will show with general information about them. Clicking the 'save' button on the Search page will save the book to the Saved page. On the Saved page, the books can be removed by clicking the 'delete' button. Clicking the view button by each book will open a tab to the book on Google Books, allowing more information to be obtained
   
@@ -47,7 +49,7 @@
   
   ## License
   
-  This project is licensed under the MIT
+  This project is licensed under MIT licensing.
   
   ## Questions?
   
