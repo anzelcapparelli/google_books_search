@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
+import Card from "react-bootstrap/Card";
+import { Col, Row, Container } from "../components/Grid";
+
 
 function bookSearchResult(result) {
 
@@ -21,7 +24,7 @@ function bookSearchResult(result) {
             , image: imageLinks
         });
     })
-    
+
     return (resultClean);
 }
 
@@ -31,7 +34,7 @@ function Search() {
     const [formSearch, setFormSearch] = useState({});
 
 
-// starting search
+    // starting search
     useEffect(() => {
         API.getSearch("Harry Potter")
             .then(res => {
@@ -44,30 +47,30 @@ function Search() {
 
     function handleInputChange(event) {
         const { name, value } = event.target;
-        setFormSearch({[name] : value});
-      }
+        setFormSearch({ [name]: value });
+    }
 
     function handleFormSubmit(event) {
         event.preventDefault();
-        if (formSearch.query){
+        if (formSearch.query) {
             API.getSearch(formSearch.query)
-            .then(res => {
-                setSearchList(bookSearchResult(res));
-            })
-            .catch(err => console.log(err));
+                .then(res => {
+                    setSearchList(bookSearchResult(res));
+                })
+                .catch(err => console.log(err));
         }
     }
 
     function handleSave(event) {
         event.preventDefault();
         // const bookToSave= JSON.parse(event.target.value);
-        let bookToSave=searchList.filter(book => {
+        let bookToSave = searchList.filter(book => {
             return event.target.value === book.gbID;
         })
-        bookToSave=bookToSave[0];
-        
+        bookToSave = bookToSave[0];
+
         API.saveBook(bookToSave)
-        .catch(err => console.error(err))
+            .catch(err => console.error(err))
     }
 
 
@@ -78,18 +81,28 @@ function Search() {
             <h1>Search for Books</h1>
 
             <form>
-            <Input
-              onChange={handleInputChange}
-              name="query"
-              placeholder="Harry Potter"
-            // is label an attr?
-            />
-            <FormBtn
-              disabled={!formSearch.query}
-              onClick={handleFormSubmit}
-            >
-              Search
-            </FormBtn>
+                <Container fluid>
+                    <Row>
+                        <Col size="11">
+                            <Input
+                                onChange={handleInputChange}
+                                name="query"
+                                placeholder="Harry Potter"
+                            // is label an attr?
+                            />
+                        </Col>
+                        <Col size="1">
+                            <FormBtn
+
+                                disabled={!formSearch.query}
+                                onClick={handleFormSubmit}
+                            >
+                                Search
+                        </FormBtn>
+                        </Col>
+                    </Row>
+                </Container>
+
             </form>
 
             {searchList.length ? (
@@ -99,22 +112,48 @@ function Search() {
                         const { gbID,
                             image,
                             title, authors, pages, genres, link, description } = searchBook;
+
                         return (
+
                             <div key={gbID}>
 
-                                <hr />
+                                <Card style={{ width: "80%" }}>
+                                    <Card.Body>
+                                        <Container fluid>
+                                            <Row>
+                                                <Col size="md-2">
+                                                    {image && <img src={image.thumbnail} alt={title} className="mb-3 mt-3" />}
+                                                </Col>
+                                                <Col size="md-4">
+                                                    <Card.Title>{title}</Card.Title>
+                                                    <Card.Subtitle className="mb-2 text-muted">{(authors) && `by ${authors.join(", ")}`}</Card.Subtitle>
+                                                </Col>
+                                                <Col size="md-6">
+                                                    <div className="d-flex justify-content-end">
+                                                        <Card.Link href={link} rel="noreferrer" target="_blank" className="btn btn-warning">View</Card.Link>
+                                                        <Card.Link><button onClick={handleSave} value={gbID} className="btn btn-warning">Save</button></Card.Link>
+                                                    </div>
+                                                </Col>
+                                            </Row>
 
-                                {image && <img src={image.thumbnail} alt={title} />}
-                                {/* <p>{title} by {authors.join(", ")}</p> */}
-                                <p>{title} by {authors}</p>
-                                <p>pages: {pages} </p>
-                                {/* <p>genres: {genres.join(", ")}</p> */}
-                                <p>genres: {genres}</p>
-                                <a href={link} rel="noreferrer" target="_blank"> Google Books Page</a>
-                                {/* <DeleteBtn onClick={() => deleteBook(book._id)} /> */}
-                                <p>{description}</p>
-                                <button onClick={handleSave} value={gbID}>save</button>
-                                <hr />
+                                            <Card.Text>
+                                                {description}
+                                            </Card.Text>
+                                            <Card.Text>
+                                                {(genres) && `genres: ${genres.join(", ")}`}
+                                                {/* genres: {genres} */}
+                                            </Card.Text>
+                                            <Card.Text>
+                                                {(pages) && `${pages} pages`}
+                                            </Card.Text>
+
+                                        </Container>
+                                    </Card.Body>
+                                </Card>
+
+
+
+
 
                             </div>
                         );
