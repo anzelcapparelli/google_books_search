@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API from "../utils/API";
+import { Input, FormBtn } from "../components/Form";
 
 function bookSearchResult(result) {
 
@@ -29,6 +30,8 @@ function bookSearchResult(result) {
 function Search() {
 
     const [searchList, setSearchList] = useState([]);
+    const [formSearch, setFormSearch] = useState({});
+
 
     // need form input as well!
     useEffect(() => { console.log(searchList) }, [searchList])
@@ -41,18 +44,23 @@ function Search() {
             .catch(err => console.log(err));
     }, [])
 
-    // function handleInputChange(event) {
-    //     // add code to control the components here
-    //     const { name, value } = event.target;
-    //     //get the property that changed
-    //     setFormObject({ ...formObject, [name] : value});
-    //     //use it to update state 
-    //   }
 
-    // function handleFormSubmit(event) {
-    //     event.preventDefault();
-    //     console.log(event.target);
-    // }
+
+    function handleInputChange(event) {
+        const { name, value } = event.target;
+        setFormSearch({[name] : value});
+      }
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        if (formSearch.query){
+            API.getSearch(formSearch.query)
+            .then(res => {
+                setSearchList(bookSearchResult(res));
+            })
+            .catch(err => console.log(err));
+        }
+    }
 
     function handleSave(event) {
         event.preventDefault();
@@ -74,6 +82,21 @@ function Search() {
 
         <div>
             <h1>Search for Books</h1>
+
+            <form>
+            <Input
+              onChange={handleInputChange}
+              name="query"
+              placeholder="Harry Potter"
+            // is label an attr?
+            />
+            <FormBtn
+              disabled={!formSearch.query}
+              onClick={handleFormSubmit}
+            >
+              Submit Book
+            </FormBtn>
+            </form>
 
             {searchList.length ? (
                 <div>
