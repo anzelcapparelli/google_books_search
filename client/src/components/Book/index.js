@@ -20,6 +20,8 @@ function Book(props) {
                                 <div className="d-flex justify-content-end">
                                     <Card.Link href={props.link} rel="noreferrer" target="_blank" className="btn btn-warning">View</Card.Link>
                                     {/* <Card.Link><button onClick={handleSave} value={gbID} className="btn btn-warning">Save</button></Card.Link> */}
+                                    {/* <Card.Link><button onClick={deleteBook} value={gbID} className="btn btn-warning">Delete</button></Card.Link> */}
+                                    <Card.Link><button onClick={props.btn} value={props.gbID} className="btn btn-warning">{props.pagetype==="search"? "Save" : "Delete"}</button></Card.Link>
                                     {/* saved page vs search page: option to either save or delete... */}
                                 </div>
                             </Col>

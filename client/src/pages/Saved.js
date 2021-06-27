@@ -22,7 +22,8 @@ function Saved() {
   function deleteBook(id) {
     API.deleteBook(id)
       .then(() => loadBooks())
-      .catch((err) => console.log(err));
+      // .catch((err) => console.log(err));
+      .catch((err) => console.log("delete broken"));
   }
 
 
@@ -35,8 +36,9 @@ function Saved() {
 
         return (
           <div key={savedBook.gbID}>
-            <Book {...savedBook}></Book>
-
+            <Book {...savedBook} btn={deleteBook(savedBook.gbID)} pagetype="saved"></Book>
+            {/* <button onClick={() => deleteBook(_id)}>delete</button> */}
+            {/* <button onClick={handleSave} value={gbID}>save</button> */}
           </div>
         );
       })}

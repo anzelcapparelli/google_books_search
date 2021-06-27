@@ -114,7 +114,7 @@ function Search() {
                         return (
 
                             <div key={searchBook.gbID}>
-                                <Book {...searchBook}></Book>
+                                <Book {...searchBook} btn={handleSave} pagetype="search"></Book>
 
                             </div>
                         );
