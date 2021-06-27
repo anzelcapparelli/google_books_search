@@ -3,6 +3,7 @@ import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
 import Card from "react-bootstrap/Card";
 import { Col, Row, Container } from "../components/Grid";
+import Book from "../components/Book";
 
 
 function bookSearchResult(result) {
@@ -98,7 +99,7 @@ function Search() {
                                 onClick={handleFormSubmit}
                             >
                                 Search
-                        </FormBtn>
+                            </FormBtn>
                         </Col>
                     </Row>
                 </Container>
@@ -109,59 +110,19 @@ function Search() {
                 <div>
                     <h2>Results</h2>
                     {searchList.map(searchBook => {
-                        const { gbID,
-                            image,
-                            title, authors, pages, genres, link, description } = searchBook;
 
                         return (
 
-                            <div key={gbID}>
-
-                                <Card style={{ width: "80%" }}>
-                                    <Card.Body>
-                                        <Container fluid>
-                                            <Row>
-                                                <Col size="md-2">
-                                                    {image && <img src={image.thumbnail} alt={title} className="mb-3 mt-3" />}
-                                                </Col>
-                                                <Col size="md-4">
-                                                    <Card.Title>{title}</Card.Title>
-                                                    <Card.Subtitle className="mb-2 text-muted">{(authors) && `by ${authors.join(", ")}`}</Card.Subtitle>
-                                                </Col>
-                                                <Col size="md-6">
-                                                    <div className="d-flex justify-content-end">
-                                                        <Card.Link href={link} rel="noreferrer" target="_blank" className="btn btn-warning">View</Card.Link>
-                                                        <Card.Link><button onClick={handleSave} value={gbID} className="btn btn-warning">Save</button></Card.Link>
-                                                    </div>
-                                                </Col>
-                                            </Row>
-
-                                            <Card.Text>
-                                                {description}
-                                            </Card.Text>
-                                            <Card.Text>
-                                                {(genres) && `genres: ${genres.join(", ")}`}
-                                                {/* genres: {genres} */}
-                                            </Card.Text>
-                                            <Card.Text>
-                                                {(pages) && `${pages} pages`}
-                                            </Card.Text>
-
-                                        </Container>
-                                    </Card.Body>
-                                </Card>
-
-
-
-
+                            <div key={searchBook.gbID}>
+                                <Book {...searchBook}></Book>
 
                             </div>
                         );
                     })}
                 </div>
             ) : (
-                    <h3>No Results to Display</h3>
-                )}
+                <h3>No Results to Display</h3>
+            )}
 
         </div>
     );
