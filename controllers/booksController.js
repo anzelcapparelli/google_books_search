@@ -21,7 +21,7 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => {
-        console.log(req);
+        console.log(err);
         });
   }
 };

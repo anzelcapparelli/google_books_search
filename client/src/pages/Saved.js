@@ -19,11 +19,11 @@ function Saved() {
   };
 
   // Deletes a book from the database with a given id, then reloads books from the db
-  function deleteBook(id) {
-    API.deleteBook(id)
+  function deleteBook(event) {
+    console.log(event.target.value)
+    API.deleteBook(event.target.value)
       .then(() => loadBooks())
-      // .catch((err) => console.log(err));
-      .catch((err) => console.log("delete broken"));
+      .catch((err) => console.log(err));
   }
 
 
@@ -36,9 +36,7 @@ function Saved() {
 
         return (
           <div key={savedBook.gbID}>
-            <Book {...savedBook} btn={deleteBook(savedBook.gbID)} pagetype="saved"></Book>
-            {/* <button onClick={() => deleteBook(_id)}>delete</button> */}
-            {/* <button onClick={handleSave} value={gbID}>save</button> */}
+            <Book {...savedBook} btn={deleteBook} pagetype="saved"></Book>
           </div>
         );
       })}
