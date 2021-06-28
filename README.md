@@ -6,7 +6,7 @@
   deployed app: [click here](https://google-books379009.herokuapp.com/)
 
   ### Launch page:
-  ![launch page](public/assets/images/###PLACEHOLDER###.jpg)
+  ![launch page](./client/public/assets/images/googleBooks.jpg)
 
   ## Table of contents
   ​
