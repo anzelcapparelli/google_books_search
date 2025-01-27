@@ -31,7 +31,7 @@
   
   ## Installation
   
-  If you would like to download and run this app locally, or deploy a copy of the app: download the files from GitHub, then run the command ``` npm i ``` in the terminal while in the root file. This will download all necessary node modules for the app to run. Additionally, as typical for MERN apps this, app requires React.js, Node.js, Express.js, and MongoDB to function locally.
+  If you would like to download and run this app locally, or deploy a copy of the app: download the files from GitHub, then run the command ``` npm i ``` in the terminal while in the root file. This will download all necessary node modules for the app to run. Additionally, as typical for MERN apps, this app requires React.js, Node.js, Express.js, and MongoDB to function locally.
 
   If a copy of this app is deployed, linking the app to a MongoDB database is necessary. The method used for this app was by using MongoDB Atlas, which has a free tier available: https://www.mongodb.com/cloud/atlas
   
