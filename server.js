@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+require('dotenv').config()
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -26,7 +27,7 @@ app.use(routes);
 // ====================================================================================================
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks",
+mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1/googlebooks",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -44,5 +45,5 @@ app.get("*", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🌎 ==> API server now on port ${PORT}!`);
+  console.log(`🌎 ==> test API server now on port ${PORT}!`);
 });
