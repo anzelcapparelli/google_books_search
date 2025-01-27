@@ -37,7 +37,7 @@ function Search() {
 
     // starting search
     useEffect(() => {
-        API.getSearch("Harry Potter")
+        API.getSearch("Winnie the Pooh")
             .then(res => {
                 setSearchList(bookSearchResult(res));
             })
@@ -88,7 +88,7 @@ function Search() {
                             <Input
                                 onChange={handleInputChange}
                                 name="query"
-                                placeholder="Harry Potter"
+                                placeholder="Winnie the Pooh"
                             // is label an attr?
                             />
                         </Col>

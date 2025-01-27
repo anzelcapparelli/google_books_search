@@ -13,7 +13,7 @@ import './index.css';
 import API from "./utils/API";
 require("dotenv").config();
 
-API.getSearch("Harry Potter").then(res=>{
+API.getSearch("Winnie the Pooh").then(res=>{
   console.log(res.data.items[0].volumeInfo.imageLinks.thumbnail);
 })
 
