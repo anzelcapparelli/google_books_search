@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Create React Express Boilerplate",
   "engines": {
-    "node": "16.8.0"
+    "node": "22.13.1"
   },
   "main": "server.js",
   "scripts": {
@@ -14,19 +14,19 @@
     "install-client": "cd client && npm install",
     "build": "cd client && react-scripts build",
     "server": "nodemon server.js",
-    "develop":"concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
+    "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
     "heroku-postbuild": "npm run build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.2.0",
-    "nodemon": "^2.0.21"
+    "nodemon": "^3.1.9"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
-    "mongoose": "^5.11.18"
+    "mongoose": "^8.9.5"
   }
 }
